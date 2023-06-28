@@ -18,7 +18,7 @@ def getSenders():
     return jsonify(send)
 
 # Inserir configuração de envio
-@app.route('/send', methods=["POST"])
+@app.route('/senders', methods=["POST"])
 def insertSender():
     new_send = request.get_json()
     send.append(new_send)
@@ -27,7 +27,7 @@ def insertSender():
     return jsonify(send)
 
 # Deletar configuração de envio
-@app.route('/send/<int:id>', methods=["DELETE"])
+@app.route('/senders/<int:id>', methods=["DELETE"])
 def deleteSender(id):
     for index, config in enumerate(send):
         if config.get("send_id") == id:
