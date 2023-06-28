@@ -12,15 +12,34 @@ with open("origin.json") as origin_file:
 with open("send.json") as send_file:
     send = json.load(send_file)
 
-# Listar todos os grupos
-@app.route('/groups', methods=['GET'])
-def getGroups():
-    return jsonify(origin, destiny)
-
 # Listar todas as configurações de envio
 @app.route('/senders', methods=['GET'])
 def getSenders():
     return jsonify(send)
+
+# Inserir configuração de envio
+@app.route('/send', methods=["POST"])
+def insertSender():
+    new_send = request.get_json()
+    send.append(new_send)
+    with open("send.json", "w") as send_file:
+        json.dump(send, send_file, indent = 2)
+    return jsonify(send)
+
+# Deletar configuração de envio
+@app.route('/send/<int:id>', methods=["DELETE"])
+def deleteSender(id):
+    for index, config in enumerate(send):
+        if config.get("send_id") == id:
+            del send[index]
+            with open("send.json", "w") as send_file:
+                json.dump(send, send_file, indent=2)
+            return jsonify(send)
+
+# Listar todos os grupos
+@app.route('/groups', methods=['GET'])
+def getGroups():
+    return jsonify(origin, destiny)
 
 # Buscar grupo de destino por id
 @app.route('/groups/destiny/<int:id>', methods=['GET'])
