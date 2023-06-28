@@ -1,0 +1,10 @@
+[
+    {
+        "origin_group_id": 1,
+        "origin_group_name": "Nome do grupo de origem",
+        "destiny_group_id": 2,
+        "destiny_group_name": "Nome do grupo de destino",
+        "old_message": "A mensagem antiga vai nesse atributo",
+        "new_message": "A nova mensagem vai nesse atributo"
+    }
+]
