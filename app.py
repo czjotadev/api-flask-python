@@ -36,19 +36,64 @@ def getGroupOriginById(id):
         if group.get('group_id') == id:
             return jsonify(group)
 
-@app.route('/groups/<int:id>', methods=['PUT'])
-def updateGroups(id):
+# Editar grupo de destino por id
+@app.route('/groups/destiny/<int:id>', methods=['PUT'])
+def updateGroupDestiny(id):
     group_data = request.get_json()
-    return request.get_json()
-    
+    for group in destiny:
+        if group.get('group_id') == id:
+            group.update(group_data)
+            with open("destiny.json", "w") as destiny_file:
+                json.dump(destiny, destiny_file, indent=2)
+            return jsonify(group)
 
-@app.route('/groups/origin', methods=['GET'])
-def getGroupsOrigin():
-    return jsonify(groups)
+# Editar grupo de origem por id
+@app.route('/groups/origin/<int:id>', methods=['PUT'])
+def updateGroupOrigin(id):
+    group_data = request.get_json()
+    for group in origin:
+        if group.get('group_id') == id:
+            group.update(group_data)
+            with open("origin.json", "w") as origin_file:
+                json.dump(origin, origin_file, indent=2)
+            return jsonify(group)
 
-@app.route('/groups/destiny', methods=['GET'])
-def getGroupsDestiny():
-    return jsonify(groups)
+# Inserir grupo de origem
+@app.route('/groups/destiny', methods=["POST"])
+def insertGroupDestiny():
+    new_group = request.get_json()
+    destiny.append(new_group)
+    with open("destiny.json", "w") as destiny_file:
+        json.dump(destiny, destiny_file, indent=2)
+    return jsonify(destiny)
 
+# Inserir grupo de origem
+@app.route('/groups/origin', methods=["POST"])
+def insertGroupOrigin():
+    new_group = request.get_json()
+    origin.append(new_group)
+    with open("origin.json", "w") as origin_file:
+        json.dump(origin, origin_file, indent=2)
+    return jsonify(origin)
+
+# Deletar grupo de destino
+@app.route('/groups/destiny/<int:id>', methods=["DELETE"])
+def deleteGroupDestiny(id):
+    for index, group in enumerate(destiny):
+        if group.get("group_id") == id:
+            del destiny[index]
+            with open("destiny.json", "w") as destiny_file:
+                json.dump(destiny, destiny_file, indent=2)
+            return jsonify(destiny)
+
+# Deletar grupo de origem
+@app.route('/groups/origin/<int:id>', methods=["DELETE"])
+def deleteGroupOrigin(id):
+    for index, group in enumerate(origin):
+        if group.get("group_id") == id:
+            del origin[index]
+            with open("origin.json", "w") as origin_file:
+                json.dump(origin, origin_file, indent=2)
+            return jsonify(origin)
 
 app.run(port=8080, debug=True, host='localhost')

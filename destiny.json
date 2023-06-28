@@ -1,14 +1,20 @@
 [
-    {
-        "group_id": 2,
-        "group_type": "destiny",
-        "group_name": "Grupo B",
-        "active": true
-    },
-    {
-        "group_id": 3,
-        "group_type": "destiny",
-        "group_name": "Grupo C",
-        "active": true
-    }
+  {
+    "group_id": 2,
+    "group_type": "destiny",
+    "group_name": "Grupo B",
+    "active": true
+  },
+  {
+    "group_id": 3,
+    "group_type": "destiny",
+    "group_name": "Grupo B",
+    "active": true
+  },
+  {
+    "active": true,
+    "group_id": 6,
+    "group_name": "Grupo F",
+    "group_type": "destiny"
+  }
 ]

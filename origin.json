@@ -1,8 +1,14 @@
 [
-    {
-        "group_id": 1,
-        "group_type": "origin",
-        "group_name": "Grupo A",
-        "active": true
-    }
+  {
+    "active": true,
+    "group_id": 5,
+    "group_name": "Grupo E",
+    "group_type": "origin"
+  },
+  {
+    "active": true,
+    "group_id": 1,
+    "group_name": "Grupo A",
+    "group_type": "origin"
+  }
 ]
