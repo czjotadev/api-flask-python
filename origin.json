@@ -1,14 +1,26 @@
 [
   {
     "active": true,
-    "group_id": 5,
-    "group_name": "Grupo E",
+    "group_id": 1,
+    "group_name": "Super Sinais Esportivo - Milionário",
     "group_type": "origin"
   },
   {
     "active": true,
-    "group_id": 1,
-    "group_name": "Grupo A",
+    "group_id": 2,
+    "group_name": "Super Sinais Cassino - Milionário",
+    "group_type": "origin"
+  },
+  {
+    "active": true,
+    "group_id": 3,
+    "group_name": "Super Sinais Aviator - Milionário",
+    "group_type": "origin"
+  },
+  {
+    "active": true,
+    "group_id": 4,
+    "group_name": "Super Sinais Minas - Milionário",
     "group_type": "origin"
   }
 ]

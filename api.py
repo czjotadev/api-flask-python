@@ -1,7 +1,9 @@
 import json
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 with open("destiny.json") as destiny_file:
     destiny = json.load(destiny_file)
@@ -36,10 +38,15 @@ def deleteSender(id):
                 json.dump(send, send_file, indent=2)
             return jsonify(send)
 
-# Listar todos os grupos
-@app.route('/groups', methods=['GET'])
-def getGroups():
-    return jsonify(origin, destiny)
+# Listar todos os grupos de destinp
+@app.route('/groups/destiny', methods=['GET'])
+def getGroupsDestiny():
+    return jsonify(destiny)
+
+# Listar todos os grupos de origem
+@app.route('/groups/origin', methods=['GET'])
+def getGroupsOrigin():
+    return jsonify(origin)
 
 # Buscar grupo de destino por id
 @app.route('/groups/destiny/<int:id>', methods=['GET'])
